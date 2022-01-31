@@ -1,1 +1,1 @@
-# rock-paper-sccissors
+Rock Paper Scissors using JavaScript in the browser console. For TheOdinProject.
