@@ -8,11 +8,10 @@
 </head>
 <body>
     <script>
+        // First, we need to have the computer select their Rock, Paper or Scissors
         const compSelectionArray = ["Rock", "Paper", "Scissors"]
-        let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length);
-        let compSelection = compSelectionArray[randomArrayNumber]
-
-        console.log(compSelection)  
+        let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length); //This selects a random number between 0 and the lenght of the array and saves
+        let compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
 
     </script>
 
