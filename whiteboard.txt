@@ -1,0 +1,40 @@
+Function computerSelection
+ - [array] compOptions (
+ - picks rock, paper or scissors
+   https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+
+Function playRound
+ - user enters rock, paper or scissors (playerSlection)
+ 
+ - IF playerSelection === computerSelection 
+        - return DRAW 
+        - print DRAW
+        
+  -IF computerSel === rock and playerSel === paper 
+        - player wins
+        - print player wins
+  ELSE 
+        - computer wins
+        - print player loses 
+
+-IF computerSel === paper and playerSel === scissors
+         - player wins 
+ ELSE 
+          - comp wins
+
+-IF computerSel === scissors and playerSel === rock
+         - player wins
+   ELSE 
+         - comp wins
+
+-IF comp wins (compscore ++)
+-IF player wins (payerscore ++)
+
+Loop playRound 5 times
+
+-When comp or playeracore === 5
+       -declare winner 
+
+
+
+Converting the string to all uppercase to avoid capitalisation errors with https://stackoverflow.com/questions/2140627/how-to-do-case-insensitive-string-comparison
