@@ -9,49 +9,54 @@
 <body>
     <script>
 
-        // First, we need to have the computer select their Rock, Paper or Scissors
-    
-        const compSelectionArray = ["Rock", "Paper", "Scissors"]
-        let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length); //This selects a random number between 0 and the lenght of the array and saves
-        var compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
-        console.log(compSelection)
-        // This needs to go into a function called computerPlay//
+        let playerScore = 0
+        let compScore = 0
 
-        function playerPlay (Rock,Paper,Scissors) {
+        function playRound () {
+            const compSelectionArray = ["Rock", "Paper", "Scissors"]
+            let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length); //This selects a random number between 0 and the lenght of the array and saves
+            var compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
+            var compSelection = compSelection.toUpperCase();
+            console.log(compSelection);
+
             var playerSelection = prompt("What's your play... Rock, Paper or Scissors?");
             var playerSelection = playerSelection.toUpperCase();
-            return playerSelection
+            
             // Player has been prompted to select their entry which is then converted to ALLCAPS to remove any error for different capitalisations not matching//
 
-            if (playerSelection != "ROCK" || "PAPER" || "SCISSORS") {
-                alert("You must enter Rock, Paper or Scissors") //If the user enters anything other than rock, paper or scissors, this will throw an alert//
+            if (playerSelection !== "ROCK" || "PAPER" || "SCISSORS") {
+            alert("You must enter Rock, Paper or Scissors") //If the user enters anything other than rock, paper or scissors, this will throw an alert//
             }
-
-
-        }
-        var playerSelection = playerPlay("Rock", "Paper", "Scissors");
-
-        playerPlay();
-        
-        function playRound () {
+            
             if (playerSelection === compSelection) {   
                 console.log("TIE!");
             } else if (compSelection === "ROCK" && playerSelection === "PAPER"){
                 console.log("You Win!");
+                playerScore ++;
             } else if (compSelection === "ROCK" && playerSelection === "SCISSORS"){
                 console.log("You lose!");
+                compScore ++;
             } else if (compSelection === "PAPER" && playerSelection === "SCISSORS"){
                 console.log("You Win!");
+                playerScore ++;
             } else if (compSelection === "PAPER" && playerSelection === "ROCK"){
                 console.log("You lose!");
+                compScore ++;
             } else if (compSelection === "SCISSORS" && playerSelection === "ROCK"){
                 console.log("You Win!");
+                playerScore ++;
             } else {
                 console.log ("You Lose")
             }
+            console.log ("Player Score: " + playerScore, "Computer Score: " + compScore)
         }
 
         playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+
 
     </script>
 
