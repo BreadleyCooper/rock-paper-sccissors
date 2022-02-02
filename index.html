@@ -12,21 +12,23 @@
     
         const compSelectionArray = ["Rock", "Paper", "Scissors"]
         let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length); //This selects a random number between 0 and the lenght of the array and saves
-        let compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
+        var compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
 
         // This needs to go into a function called computerPlay//
 
         function playerPlay (Rock,Paper,Scissors) {
             let playerSelection = prompt("What's your play... Rock, Paper or Scissors?");
-            let playerSelection = playerSelection.toUpperCase();
+            var playerSelection = playerSelection.toUpperCase();
             // Player has been prompted to select their entry which is then converted to ALLCAPS to remove any error for different capitalisations not matching//
 
             if (playerSelection != "ROCK" || "PAPER" || "SCISSORS") {
-                alert("You must enter Rock, Paper or Scissors")
+                alert("You must enter Rock, Paper or Scissors") //If the user enters anything other than rock, paper or scissors, this will throw an alert//
             }
 
 
         }
+
+        function playRound ()
 
     </script>
 
