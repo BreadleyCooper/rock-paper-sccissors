@@ -38,3 +38,7 @@ Loop playRound 5 times
 
 
 Converting the string to all uppercase to avoid capitalisation errors with https://stackoverflow.com/questions/2140627/how-to-do-case-insensitive-string-comparison
+
+The game logic could be...
+
+If the computer selection is rock, and the player selection is paper, the player wins

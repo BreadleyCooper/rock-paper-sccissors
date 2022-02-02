@@ -19,6 +19,7 @@
         function playerPlay (Rock,Paper,Scissors) {
             let playerSelection = prompt("What's your play... Rock, Paper or Scissors?");
             var playerSelection = playerSelection.toUpperCase();
+            return playerSelection
             // Player has been prompted to select their entry which is then converted to ALLCAPS to remove any error for different capitalisations not matching//
 
             if (playerSelection != "ROCK" || "PAPER" || "SCISSORS") {
@@ -28,7 +29,23 @@
 
         }
 
-        function playRound ()
+        function playRound () {
+            if (playerSelection === compSelection) {   
+                console.log("TIE!");
+            } else if (compSelection === "ROCK" && playerSelection === "PAPER"){
+                console.log("You Win!");
+            } else if (compSelection === "ROCK" && playerSelection === "SCISSORS"){
+                console.log("You lose!");
+            } else if (compSelection === "PAPER" && playerSelection === "SCISSORS"){
+                console.log("You Win!");
+            } else if (compSelection === "PAPER" && playerSelection === "ROCK"){
+                console.log("You lose!");
+            } else if (compSelection === "SCISSORS" && playerSelection === "ROCK"){
+                console.log("You Win!");
+            } else {
+                console.log ("You Lose!")
+            }
+        }
 
     </script>
 
