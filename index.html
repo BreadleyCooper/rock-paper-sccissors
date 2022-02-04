@@ -11,6 +11,8 @@
 
         let playerScore = 0
         let compScore = 0
+        let playerScoreTotal = 0
+        let compScoreTotal = 0
 
         function playRound () {
             const compSelectionArray = ["Rock", "Paper", "Scissors"]
@@ -48,7 +50,7 @@
             } else {
                 console.log ("You Lose")
             }
-            console.log ("Player Score: " + playerScore, "Computer Score: " + compScore)
+            console.log ("Player Score: " + playerScore, "Computer Score: " + compScore);
         }
 
         playRound();
@@ -92,13 +94,17 @@
             
                 playAgain = playAgain.toUpperCase();
                 if (playAgain === "Y") {
-                    playRound()
-                    playRound()
-                    playRound()
-                    playRound()
-                    playRound()
+                    playerScore = 0;
+                    compScore = 0;
+                    playRound();
+                    playRound();
+                    playRound();
+                    playRound();
+                    playRound();
+                    
+                    
                 }else {
-                    alert("Thanks for playing, hit refresh to start again")
+                    alert("Thanks for playing, hit refresh to play again")
                 }
             }
 
