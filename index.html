@@ -7,114 +7,167 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="scoreContainer">
+        <p class="pScore"> Player Score: </p>
+        <p class="cScore"> Computer Score: </p>
+    </div>
+    <div class="roundCounter"> Round 1 of 5</div>
+    <div class="btnContainer">
+        <button id="rockBtn">Rock</button>
+        <button id="paperBtn">Paper</button>
+        <button id="scissorsBtn">Scissors</button>
+    </div>
+
+
+
     <script>
 
-        let playerScore = 0
-        let compScore = 0
-        let playerScoreTotal = 0
-        let compScoreTotal = 0
+        let playerScore = 0;
+        let compScore = 0;
+        let playerScoreTotal = 0;
+        let compScoreTotal = 0;
+        let playerSelection = "";
+        let roundOutcome = "";
+        let compSelection = "";
+        let roundCount = 0;
+        const pScore = document.querySelector(".pScore");
+        const cScore = document.querySelector(".cScore");
+        const roundDisplay = document.querySelector(".roundCounter");
 
-        function playRound () {
-            const compSelectionArray = ["Rock", "Paper", "Scissors"]
+        function computerSelect(){
+            const compSelectionArray = ["ROCK", "PAPER", "SCISSORS"]
             let randomArrayNumber = Math.floor(Math.random() * compSelectionArray.length); //This selects a random number between 0 and the lenght of the array and saves
-            var compSelection = compSelectionArray[randomArrayNumber] //This selects the array item that correlates with the random number generated above
-            var compSelection = compSelection.toUpperCase();
+            compSelection = compSelectionArray[randomArrayNumber]; //This selects the array item that correlates with the random number generated above
+            return compSelection;
             
-
-            var playerSelection = prompt("What's your play... Rock, Paper or Scissors?");
-            var playerSelection = playerSelection.toUpperCase();
-            
-            // Player has been prompted to select their entry which is then converted to ALLCAPS to remove any error for different capitalisations not matching//
-
-            if (((playerSelection !== "ROCK") && (playerSelection !== "PAPER") && (playerSelection !== "SCISSORS"))) {
-                alert("You must enter Rock, Paper or Scissors") //If the user enters anything other than rock, paper or scissors, this will throw an alert//
-            }
-            
-            if (playerSelection === compSelection) {   
-                console.log("TIE!");
-            } else if (compSelection === "ROCK" && playerSelection === "PAPER"){
-                console.log("You Win!");
-                playerScore ++;
-            } else if (compSelection === "ROCK" && playerSelection === "SCISSORS"){
-                console.log("You lose!");
-                compScore ++;
-            } else if (compSelection === "PAPER" && playerSelection === "SCISSORS"){
-                console.log("You Win!");
-                playerScore ++;
-            } else if (compSelection === "PAPER" && playerSelection === "ROCK"){
-                console.log("You lose!");
-                compScore ++;
-            } else if (compSelection === "SCISSORS" && playerSelection === "ROCK"){
-                console.log("You Win!");
-                playerScore ++;
-            } else {
-                console.log ("You Lose")
-            }
-            console.log ("Player Score: " + playerScore, "Computer Score: " + compScore);
-        }
-
-        playRound();
-        playRound();
-        playRound();
-        playRound();
-        playRound();
-
-        let result = 1;
-
-        if (playerScore === compScore) {
-            console.log ("It's a TIE")
-            result = 1;
-        } else if (playerScore > compScore) {
-            console.log ("You Win!")
-            result = 2;
-        } else {
-            console.log ("You lose, sorry!")
-            result = 3;
-        }
-        console.log(result);
-        
-        // A function(?) that allows for a new game with a prompt depending on the outcome of the prev game
-        let playAgain = ""
-
-        if (result == 1) {
-            playAgain = prompt("You Tied! There can only be one winner...Try again? Y/N");         
-        }
-        else if (result == 2) {
-            playAgain = prompt("You Won! Congratulations, would you like to play again? Y/N");
-        }
-        else if (result == 3) {
-            playAgain = prompt("You Lost, unlucky... Try Agin? Y/N");
-        }
-        else {
-            alert ("Hmm something went wrong, hit refresh");
-        }
-        
-            function repeatRound (){
+        };
     
+        
+        function playRound(){
+        // for(let i=0;i>5;i++){ (SHOULD loop this function 5 times but not working (dont forget to add } at end of loop!))
+
+        if (playerSelection === compSelection) {   
+            roundOutcome = "Tie";
+        } else if (compSelection === "ROCK" && playerSelection === "PAPER"){
+            roundOutcome = "You Win";
+            playerScore ++;
+        } else if (compSelection === "ROCK" && playerSelection === "SCISSORS"){
+            roundOutcome = "You lose!";
+            compScore ++;
+        } else if (compSelection === "PAPER" && playerSelection === "SCISSORS"){
+            roundOutcome = "You Win";
+            playerScore ++;
+        } else if (compSelection === "PAPER" && playerSelection === "ROCK"){
+            roundOutcome = "You lose!";
+            compScore ++;
+        } else if (compSelection === "SCISSORS" && playerSelection === "ROCK"){
+            roundOutcome = "You Win";
+            playerScore ++;
+        } else {
+            roundOutcome = "You lose!"
+        };
+        if ((roundCount === 5) && (playerScore > compScore)) {
+            roundCount = 0;    
+            console.log("Player wins this round"); 
+            playerScoreTotal ++; 
+            pScore.textContent = "Player Score: " + playerScoreTotal;       
+        } else if ((roundCount === 5) && (playerScore < compScore)){
+            roundCount = 0; 
+            console.log("You lost this round");
+            compScoreTotal ++;
+            cScore.textContent = "Computer Score: " + compScoreTotal;
             
-                playAgain = playAgain.toUpperCase();
-                if (playAgain === "Y") {
-                    playerScore = 0;
-                    compScore = 0;
-                    playRound();
-                    playRound();
-                    playRound();
-                    playRound();
-                    playRound();
-                    
-                    
-                }else {
-                    alert("Thanks for playing, hit refresh to play again")
-                }
-            }
-
-
-        repeatRound()
+        } else if ((roundCount === 5) && (playerScore === compScore)){
+            roundCount = 0; 
+            console.log("TIE")};
+        
+        console.log (playerSelection, compSelection,"Player Score: " + playerScore, "Computer Score: " + compScore); 
+        };
        
-        // Current problems... cannot access the playAgain variable in the function
+
+        let result = 0;
+        function declareRoundWinner(){
+            if (playerScore === compScore) {
+                console.log ("It's a TIE")
+                result = 1;
+            } else if (playerScore > compScore) {
+                console.log ("You Win!")
+                result = 2;
+            } else {
+                console.log ("You lose, sorry!")
+                result = 3;
+            }
+            console.log(result);
+            
+            // A function(?) that allows for a new game with a prompt depending on the outcome of the prev game
+            let playAgain = ""
+
+            if (result == 1) {
+                playAgain = prompt("You Tied! There can only be one winner...Try again? Y/N");         
+            }
+            else if (result == 2) {
+                playAgain = prompt("You Won! Congratulations, would you like to play again? Y/N");
+            }
+            else if (result == 3) {
+                playAgain = prompt("You Lost, unlucky... Try Agin? Y/N");
+            }
+            else {
+                alert ("Hmm something went wrong, hit refresh");
+            }}
+        
+        function repeatRound (){
+
+        
+            playAgain = playAgain.toUpperCase();
+            if (playAgain === "Y") {
+                playerScore = 0;
+                compScore = 0;
+                playRound();
+                playRound();
+                playRound();
+                playRound();
+                playRound();
+                
+                
+            }else {
+                alert("Thanks for playing, hit refresh to play again")
+            }
+        }
+
+       
+    // Event listeners for the buttons that call the playRound function with the correct selection
+
+    
+        const rockBtn = document.querySelector('#rockBtn');
+        rockBtn.addEventListener('click', () => {
+            roundCount ++
+            playerSelection = "ROCK";
+            roundDisplay.textContent = `Round ${+roundCount} of 5`
+            computerSelect();
+            playRound();
+            console.log(roundCount)
+
+            
+            
+        });
+        const paperBtn = document.querySelector('#paperBtn');
+        paperBtn.addEventListener('click', () => {
+            roundCount ++
+            playerSelection = "PAPER";
+            computerSelect();
+            playRound();
+            
+        })
+        const scissorsBtn = document.querySelector('#scissorsBtn');
+        scissorsBtn.addEventListener('click', () => {
+            roundCount ++
+            playerSelection = "SCISSORS";
+            computerSelect();
+            playRound() ;
+            
+        })
 
     </script>
-
 
 </body>
 </html>
